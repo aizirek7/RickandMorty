@@ -6,22 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.rickandmorty.R
-import com.example.rickandmorty.databinding.FragmentCharacterBinding
-import com.example.rickandmorty.databinding.FragmentEpisodeBinding
+import com.example.rickandmorty.databinding.FragmentLocationBinding
+import com.example.rickandmorty.databinding.FragmentSearchBinding
 
-class EpisodeFragment : Fragment() {
-
-    private var _binding: FragmentEpisodeBinding? = null
+class SearchFragment : Fragment() {
+    private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentEpisodeBinding.inflate(inflater, container, false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
-
-
 
     }
 
