@@ -2,7 +2,9 @@ package com.example.rickandmorty
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
+import com.example.rickandmorty.data.Utils
 import com.example.rickandmorty.databinding.ActivityMainBinding
 import com.example.rickandmorty.ui.main.CharacterFragment
 import com.example.rickandmorty.ui.main.EpisodeFragment
@@ -18,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setFragment(CharacterFragment())
-
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
