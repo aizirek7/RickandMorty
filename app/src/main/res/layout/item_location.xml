@@ -1,48 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp"
+    android:layout_margin="3dp"
+    app:cardUseCompatPadding="true"
+    android:id="@+id/locationCard"
+    android:layout_height="150dp">
 
-    <TextView
-        android:id="@+id/locationsName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        tools:text="Name"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:maxLines="1"
-        app:layout_constraintBottom_toTopOf="@+id/locationType"
-        app:layout_constraintEnd_toEndOf="@+id/locationType"
-        app:layout_constraintStart_toStartOf="@+id/locationType"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/locationType"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        tools:text="Type"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:maxLines="1"
-        app:layout_constraintBottom_toTopOf="@+id/locationDimension"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationsName" />
 
-    <TextView
-        android:id="@+id/locationDimension"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        tools:text="Dimension"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:maxLines="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/locationType"
-        app:layout_constraintStart_toStartOf="@+id/locationType"
-        app:layout_constraintTop_toBottomOf="@+id/locationType" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="12dp"
+            tools:text="Dimension:"
+            android:textStyle="italic"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/textEpiType"
+            app:layout_constraintEnd_toStartOf="@+id/nameEpiLoc"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nameEpiLoc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:maxLines="1"
+            android:textSize="17sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/textName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textName"
+            tools:text="unknown" />
+
+        <TextView
+            android:id="@+id/textEpiType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            tools:text="Type:"
+            android:textSize="17sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toStartOf="@+id/EpiType"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textName" />
+
+        <TextView
+            android:id="@+id/EpiType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:maxLines="1"
+            android:textSize="17sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/textEpiType"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textEpiType"
+            app:layout_constraintTop_toBottomOf="@+id/nameEpiLoc"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="Cluster" />
+
+        <TextView
+            android:id="@+id/textAirDim"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            tools:text="TextView"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/AirDim"
+            app:layout_constraintEnd_toStartOf="@+id/AirDim"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textEpiType"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/AirDim"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="17sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textAirDim"
+            app:layout_constraintTop_toBottomOf="@+id/EpiType"
+            tools:text="TextView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

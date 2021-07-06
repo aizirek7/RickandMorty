@@ -8,8 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface NetworkUtils {
-
-    @GET("api/character")
+    @GET("character")
     suspend fun getCharacters(
         @Query("name") name: String,
         @Query("status") status: String,
@@ -18,28 +17,17 @@ interface NetworkUtils {
         @Query("gender") gender: String
     ): Response<ResultsCharacter>
 
-    @GET("api/location")
+    @GET("location")
     suspend fun getLocations(
         @Query("name") name: String,
         @Query("type") type: String,
         @Query("dimension") dimension: String
     ): Response<ResultsLocation>
 
-    @GET("api/episode")
+    @GET("episode")
     suspend fun getEpisodes(
         @Query("name") name: String,
         @Query("episode") episode: String
     ): Response<ResultsEpisode>
-
-
-
-    @GET("api/character")
-    suspend fun getCharacter(): Response<ResultsCharacter>
-
-    @GET("api/location")
-    suspend fun getLocation(): Response<ResultsLocation>
-
-    @GET("api/episode")
-    suspend fun getEpisode(): Response<ResultsEpisode>
 
 }

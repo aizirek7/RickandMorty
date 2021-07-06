@@ -12,7 +12,4 @@ interface RepoImpl {
     suspend fun getCats(status_code: String): Response<String>
 
 
-    suspend fun getCharacter(): Response<ResultsCharacter>
-    suspend fun getLocation(): Response<ResultsLocation>
-    suspend fun getEpisode(): Response<ResultsEpisode>
 }

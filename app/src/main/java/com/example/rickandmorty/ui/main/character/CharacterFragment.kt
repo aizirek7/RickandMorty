@@ -1,26 +1,25 @@
-package com.example.rickandmorty.ui.main
+package com.example.rickandmorty.ui.main.character
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.rickandmorty.Adapter
-import com.example.rickandmorty.OnItemClickListener
 import com.example.rickandmorty.R
 import com.example.rickandmorty.data.Characters
 import com.example.rickandmorty.data.Utils
 import com.example.rickandmorty.databinding.FragmentCharacterBinding
+import com.example.rickandmorty.ui.main.adapters.Adapter
 import java.util.*
+import kotlin.collections.ArrayList
 
-
-class CharacterFragment : Fragment(), OnItemClickListener {
-    lateinit var adapter: Adapter
+class CharacterFragment : Fragment(), Adapter.OnItemClickListener {
     var viewModel = CharacterViewModel()
+    lateinit var adapter: Adapter
+    lateinit var recyclerView: RecyclerView
 
     private var _binding: FragmentCharacterBinding? = null
     private val binding get() = _binding!!
@@ -35,20 +34,13 @@ class CharacterFragment : Fragment(), OnItemClickListener {
 
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(CharacterViewModel::class.java)
 
-        viewModel.getLiveDataCharacter().observe(viewLifecycleOwner,{
-            Log.i(Utils.MY_TAG, "statusCode")
-            start(it as List<Objects>, 1, binding.characterRecyclerView)
+        viewModel.getLiveDataCharacter().observe(viewLifecycleOwner, {
+            start(it, binding.characterRecyclerView)
         })
-
-
-
-
-
     }
 
     override fun onDestroyView() {
@@ -56,15 +48,24 @@ class CharacterFragment : Fragment(), OnItemClickListener {
         _binding = null
     }
 
-   fun start(list: List<Objects>, number: Int, recyclerView: RecyclerView) {
-        recyclerView.layoutManager = LinearLayoutManager(parentFragment?.context, LinearLayoutManager.VERTICAL, false)
+    fun start(list: List<Characters>, recyclerView: RecyclerView) {
+        recyclerView.layoutManager = GridLayoutManager(context, 1)
         recyclerView.setHasFixedSize(true)
-        adapter = Adapter(context, number, list, this)
+        adapter = Adapter(context, list, this)
         recyclerView.adapter = adapter
     }
 
-    override fun onItemClick(position: Int, movies: List<Objects>) {
-        TODO("Not yet implemented")
-    }
 
+    override fun onItemClick(position: Int, list: List<Characters>) {
+        val bundle = Bundle()
+        bundle.putSerializable(Utils.KEY, list.get(position))
+
+        val fragment = DetailsCharacterFragment()
+        fragment.arguments = bundle
+
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
 }

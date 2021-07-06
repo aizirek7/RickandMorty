@@ -6,7 +6,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.CharacterFragment">
+    tools:context=".ui.main.character.CharacterFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/characterRecyclerView"
