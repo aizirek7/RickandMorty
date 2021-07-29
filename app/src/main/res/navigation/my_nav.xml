@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/characterFragment">
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="com.example.rickandmorty.ui.main.character.CharacterFragment"
+        android:label="fragment_character"
+        tools:layout="@layout/fragment_character" >
+        <action
+            android:id="@+id/action_characterFragment_to_detailsCharacterFragment"
+            app:destination="@id/detailsCharacterFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" >
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.example.rickandmorty.ui.main.location.LocationFragment"
+        android:label="fragment_location"
+        tools:layout="@layout/fragment_location" >
+        <action
+            android:id="@+id/action_locationFragment_to_detailsLocationFragment"
+            app:destination="@id/detailsLocationFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" >
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/episodeFragment"
+        android:name="com.example.rickandmorty.ui.main.episode.EpisodeFragment"
+        android:label="fragment_episode"
+        tools:layout="@layout/fragment_episode" >
+        <action
+            android:id="@+id/action_episodeFragment_to_detailsEpisodeFragment"
+            app:destination="@id/detailsEpisodeFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right">
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.rickandmorty.ui.main.search.SearchFragment"
+        android:label="SearchFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/detailsLocationFragment"
+        android:name="com.example.rickandmorty.ui.main.location.DetailsLocationFragment"
+        android:label="DetailsLocationFragment" >
+        <argument
+            android:name="location"
+            app:argType="com.example.rickandmorty.data.Location" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsCharacterFragment"
+        android:name="com.example.rickandmorty.ui.main.character.DetailsCharacterFragment"
+        android:label="fragment_details_character"
+        tools:layout="@layout/fragment_details_character" >
+        <argument
+            android:name="character"
+            app:argType="com.example.rickandmorty.data.Characters" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsEpisodeFragment"
+        android:name="com.example.rickandmorty.ui.main.episode.DetailsEpisodeFragment"
+        android:label="fragment_details_location"
+        tools:layout="@layout/fragment_details_location" >
+        <argument
+            android:name="episode"
+            app:argType="com.example.rickandmorty.data.Episode" />
+    </fragment>
+
+</navigation>

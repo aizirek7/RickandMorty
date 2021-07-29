@@ -223,42 +223,42 @@ class SearchFragment : Fragment(), AdapterForEpiLoc.OnItemClickListener, Adapter
     }
 
     override fun onItemClick(position: Int, list: List<Characters>) {
-        val bundle = Bundle()
-        bundle.putSerializable(Utils.KEY, list[position])
-        val fragment = DetailsCharacterFragment()
-        fragment.arguments = bundle
-
-        parentFragmentManager.beginTransaction().apply {
-            replace(R.id.fragment_container, fragment)
-            addToBackStack(null)
-            commit()
-        }
+//        val bundle = Bundle()
+//        bundle.putSerializable(Utils.KEY, list[position])
+//        val fragment = DetailsCharacterFragment()
+//        fragment.arguments = bundle
+//
+//        parentFragmentManager.beginTransaction().apply {
+//            replace(R.id.fragment_container, fragment)
+//            addToBackStack(null)
+//            commit()
+//        }
     }
 
 
     override fun onItemClickEpi(position: Int, list: List<Episode>) {
-        val bundle = Bundle()
-        bundle.putSerializable(Utils.KEY, list[position])
-        val fragment = DetailsEpisodeFragment()
-        fragment.arguments = bundle
-
-        parentFragmentManager.beginTransaction().apply {
-            replace(R.id.fragment_container, fragment)
-            addToBackStack(null)
-            commit()
-        }
+//        val bundle = Bundle()
+//        bundle.putSerializable(Utils.KEY, list[position])
+//        val fragment = DetailsEpisodeFragment()
+//        fragment.arguments = bundle
+//
+//        parentFragmentManager.beginTransaction().apply {
+//            replace(R.id.fragment_container, fragment)
+//            addToBackStack(null)
+//            commit()
+//        }
     }
 
     override fun onItemClickLoc(position: Int, list: List<Location>) {
-        val bundle = Bundle()
-        bundle.putSerializable(Utils.KEY, list[position])
-        val fragment = DetailsLocationFragment()
-        fragment.arguments = bundle
-
-        parentFragmentManager.beginTransaction().apply {
-            replace(R.id.fragment_container, fragment)
-            addToBackStack(null)
-            commit()
-        }
+//        val bundle = Bundle()
+//        bundle.putSerializable(Utils.KEY, list[position])
+//        val fragment = DetailsLocationFragment()
+//        fragment.arguments = bundle
+//
+//        parentFragmentManager.beginTransaction().apply {
+//            replace(R.id.fragment_container, fragment)
+//            addToBackStack(null)
+//            commit()
+//        }
     }
 }

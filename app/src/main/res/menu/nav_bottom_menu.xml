@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/characters"
+        android:id="@+id/characterFragment"
         android:icon="@drawable/ic_baseline_people_alt_24"
         android:title="@string/characters" />
 
     <item
-        android:id="@+id/locations"
+        android:id="@+id/locationFragment"
         android:icon="@drawable/ic_baseline_location_on_24"
         android:title="@string/locations" />
 
     <item
-        android:id="@+id/episodes"
+        android:id="@+id/episodeFragment"
         android:icon="@drawable/ic_baseline_auto_awesome_24"
         android:title="@string/episode" />
 
     <item
-        android:id="@+id/search"
+        android:id="@+id/searchFragment"
         android:icon="@drawable/ic_baseline_person_search_24"
         android:title="@string/search"/>
 

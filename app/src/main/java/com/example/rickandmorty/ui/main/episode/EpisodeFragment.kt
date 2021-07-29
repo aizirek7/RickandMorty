@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rickandmorty.R
@@ -18,6 +19,7 @@ import com.example.rickandmorty.databinding.FragmentCharacterBinding
 import com.example.rickandmorty.databinding.FragmentEpisodeBinding
 import com.example.rickandmorty.ui.main.adapters.Adapter
 import com.example.rickandmorty.ui.main.adapters.AdapterForEpiLoc
+import com.example.rickandmorty.ui.main.character.CharacterFragmentDirections
 import com.example.rickandmorty.ui.main.character.CharacterViewModel
 import com.example.rickandmorty.ui.main.character.DetailsCharacterFragment
 import java.util.*
@@ -61,19 +63,10 @@ class EpisodeFragment : Fragment(), AdapterForEpiLoc.OnItemClickListener {
     }
 
     override fun onItemClickEpi(position: Int, list: List<Episode>) {
-        val bundle = Bundle()
-        bundle.putSerializable(Utils.KEY, list.get(position))
-
-        val fragment = DetailsEpisodeFragment()
-        fragment.arguments = bundle
-
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
-            .commit()
+        val action = EpisodeFragmentDirections.actionEpisodeFragmentToDetailsEpisodeFragment(list[position])
+        Navigation.findNavController(binding.root).navigate(action)
     }
 
-    override fun onItemClickLoc(position: Int, list: List<Location>) {
-        TODO("Not yet implemented")
-    }
+
+    override fun onItemClickLoc(position: Int, list: List<Location>) {}
 }

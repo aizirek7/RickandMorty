@@ -6,6 +6,7 @@ import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rickandmorty.R
@@ -20,6 +21,7 @@ class CharacterFragment : Fragment(), Adapter.OnItemClickListener {
     var viewModel = CharacterViewModel()
     lateinit var adapter: Adapter
     lateinit var recyclerView: RecyclerView
+    var list = mutableListOf<Characters>()
 
     private var _binding: FragmentCharacterBinding? = null
     private val binding get() = _binding!!
@@ -39,7 +41,8 @@ class CharacterFragment : Fragment(), Adapter.OnItemClickListener {
         viewModel = ViewModelProvider(this).get(CharacterViewModel::class.java)
 
         viewModel.getLiveDataCharacter().observe(viewLifecycleOwner, {
-            start(it, binding.characterRecyclerView)
+            list.addAll(it)
+            start(list, binding.characterRecyclerView)
         })
     }
 
@@ -55,17 +58,8 @@ class CharacterFragment : Fragment(), Adapter.OnItemClickListener {
         recyclerView.adapter = adapter
     }
 
-
     override fun onItemClick(position: Int, list: List<Characters>) {
-        val bundle = Bundle()
-        bundle.putSerializable(Utils.KEY, list.get(position))
-
-        val fragment = DetailsCharacterFragment()
-        fragment.arguments = bundle
-
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
-            .commit()
+        val action = CharacterFragmentDirections.actionCharacterFragmentToDetailsCharacterFragment(list[position])
+        Navigation.findNavController(binding.root).navigate(action)
     }
 }
